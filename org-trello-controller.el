@@ -349,6 +349,7 @@ DATA is a list of (board-id &rest buffer-name point-start)."
       (orgtrello-query-http-trello 'sync)
       (cons data)))
 
+;;TODO: remove archive-cards from below function
 (defun orgtrello-controller--retrieve-full-cards (data)
   "Retrieve the full cards from DATA.
 DATA is a list of (archive-cards board-id &rest buffer-name point-start).
@@ -359,6 +360,7 @@ Return the initial list + the full cards."
                      (orgtrello-query-http-trello 'sync))))
     (cons cards data)))
 
+;;TODO: remove occurence of archive-cards
 (defun orgtrello-controller--sync-buffer-with-archived-and-trello-cards (data)
   "Update buffer at point with DATA.
 DATA is a list of (cards archive-cards board-id buffername) in this order."
@@ -385,6 +387,7 @@ DATA is a list of (cards archive-cards board-id buffername) in this order."
     (orgtrello-buffer-save-buffer buffer-name)
     (goto-char point-start)))
 
+;;TODO: remove orgtrello-controller--retrieve-archive-cards functions
 (defun orgtrello-controller-do-sync-buffer-from-trello ()
   "Full `org-mode' file synchronization.
 Beware, this will block Emacs as the request is synchronous."
